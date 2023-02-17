@@ -1,0 +1,28 @@
+.form-modal h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  font-family: poppins;
+}
+
+.form-container {
+  margin-top: 20px;
+}
+
+.MuiFormControl-root.MuiTextField-root.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  margin: 1%;
+  width: 48%;
+}
+
+.form-container button {
+  border: none;
+  outline: none;
+  width: 50%;
+  padding: 15px;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: #7286d3;
+  color: #fff;
+}

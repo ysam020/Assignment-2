@@ -11,11 +11,11 @@ function Home(props) {
         <Row>
           {props.data.map((data, id) => {
             return (
-              <Col xl={6} key={id}>
+              <Col xl={6} sm={12} key={id}>
                 <div className="list-item-container">
                   <Link to={`/${data.show.id}`}>
                     <Row className="list-item">
-                      <Col xl={2}>
+                      <Col sm={12} md={2}>
                         {data.show.image && (
                           <img
                             src={data.show.image.original}
@@ -24,7 +24,7 @@ function Home(props) {
                           />
                         )}
                       </Col>
-                      <Col>
+                      <Col sm={12} md={10}>
                         <h3>{data.show.name}</h3>
                         <span>{`Type: ${data.show.type} | Language: ${data.show.language} | Genres: ${data.show.genres}`}</span>
                         <button to={`/${data.show.id}`}>Show More</button>

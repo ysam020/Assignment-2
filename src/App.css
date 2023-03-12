@@ -1,0 +1,74 @@
+/* Navbar */
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1q39md6-MuiButtonBase-root-MuiButton-root {
+  color: #000 !important;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1q39md6-MuiButtonBase-root-MuiButton-root:hover {
+  background-color: transparent !important;
+}
+
+.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.MuiBadge-colorPrimary.css-106c1u2-MuiBadge-badge {
+  background-color: #7d95ff !important;
+}
+
+/* Login/Register Modal */
+/* Input label color */
+.css-11qvwfa-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #7d95ff !important;
+}
+
+/* Input focus border-bottom color */
+.css-2y464i-MuiInputBase-root-MuiFilledInput-root:after {
+  border-bottom: 2px solid #7d95ff !important;
+}
+
+.MuiBox-root .css-19kzrtu {
+  padding: 20px 0 !important;
+}
+
+.submit-form-btn {
+  margin-top: 20px !important;
+  background-color: #000 !important;
+  padding: 10px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+}
+
+/* Footer */
+.footer {
+  padding-bottom: 80px;
+  color: #000;
+}
+
+.footer-divider {
+  margin-bottom: 80px;
+}
+
+.footer h5 {
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 1px;
+  overflow-y: hidden;
+}
+
+.footer a {
+  display: block;
+  color: #929292;
+  font-size: 15px;
+  font-weight: 300;
+  overflow-y: hidden;
+  margin-bottom: 15px;
+}
+
+/* Footer Responsive */
+@media only screen and (max-width: 992px) {
+  .footer {
+    padding: 40px;
+    text-align: center;
+  }
+  .footer h5 {
+    margin: 10px 0;
+  }
+}

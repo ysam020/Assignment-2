@@ -10,25 +10,10 @@
       content="Web site created using create-react-app"
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Depot</title>
+    <title>Assignment</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("%PUBLIC_URL%/serviceWorker.js")
-            .then((reg) => {
-              console.log("Service Worker Registered");
-            })
-            .catch((err) => {
-              console.log("Error in service worker registration.");
-            });
-        });
-      }
-    </script>
   </body>
 </html>

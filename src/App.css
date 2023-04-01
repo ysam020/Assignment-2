@@ -1,38 +1,19 @@
-/* Navbar */
-.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1q39md6-MuiButtonBase-root-MuiButton-root {
-  color: #000 !important;
+.App {
+  overflow-x: hidden;
 }
 
-.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1q39md6-MuiButtonBase-root-MuiButton-root:hover {
-  background-color: transparent !important;
-}
-
-.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.MuiBadge-colorPrimary.css-106c1u2-MuiBadge-badge {
-  background-color: #7d95ff !important;
-}
-
-/* Login/Register Modal */
-/* Input label color */
-.css-11qvwfa-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-  color: #7d95ff !important;
-}
-
-/* Input focus border-bottom color */
-.css-2y464i-MuiInputBase-root-MuiFilledInput-root:after {
-  border-bottom: 2px solid #7d95ff !important;
-}
-
-.MuiBox-root .css-19kzrtu {
-  padding: 20px 0 !important;
-}
-
-.submit-form-btn {
-  margin-top: 20px !important;
-  background-color: #000 !important;
-  padding: 10px !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-  letter-spacing: 2px !important;
+button {
+  background-color: #000;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: white;
+  padding: 15px 35px;
+  transition: all 0.3s;
+  border-radius: 0;
+  border: none;
 }
 
 /* Footer */

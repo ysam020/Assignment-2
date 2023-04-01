@@ -3,16 +3,19 @@
 .homepage {
   padding: 80px;
   padding-top: 50px;
+  width: 100vw;
 }
 
 .home-banner {
   padding-bottom: 50px;
+  overflow-x: hidden;
 }
 
 .hero-content {
   background-color: #f3f3f3;
   padding: 50px;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .hero-content-col-left {
@@ -51,21 +54,20 @@
   margin-bottom: 30px;
 }
 
-.home-banner-btn {
+.home-banner a {
   background-color: #000;
-  color: #fff;
-  border: none;
-  outline: none;
-  padding: 10px 20px;
   text-transform: uppercase;
-  font-size: 16px;
-  font-weight: "700";
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: white;
+  padding: 15px 35px;
+  transition: all 0.3s;
+  border-radius: 0;
 }
 
-.home-banner-btn:hover {
+.home-banner a:hover {
   color: #fff;
 }
 
@@ -75,25 +77,22 @@
   scroll-margin-top: 100px;
 }
 
-.manage-products {
+.filters,
+.filters-text {
   display: flex;
-  justify-content: flex-end;
-  padding-bottom: 30px;
+  align-items: center;
+}
+
+.filters span {
+  font-size: 16px;
   text-transform: uppercase;
-  font-size: 12px;
-  color: #929292;
-  font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
-.categories span,
-.sorting span {
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.sorting {
-  padding-left: 30px;
+.filters select {
+  padding: 5px;
+  border-radius: 0;
+  outline: none;
 }
 
 .product-col {
@@ -149,23 +148,6 @@
   align-items: center !important;
   justify-content: center !important;
   margin-bottom: 20px;
-}
-
-.product-details button,
-.product-details a {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  outline: none;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: "700";
-  letter-spacing: 2px;
-}
-
-.product-details a:hover {
-  color: #fff;
 }
 
 /* Pagination */
@@ -295,6 +277,14 @@
   .product-details a {
     padding: 6px 15px;
     font-size: 12px;
+  }
+
+  .filters-text {
+    width: 100vw !important;
+  }
+
+  .filters {
+    display: block;
   }
 
   /* Pagination */

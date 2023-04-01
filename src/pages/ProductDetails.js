@@ -3,17 +3,11 @@ import "../styles/product-details.css";
 import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { AddtoCart } from "../actions/cartAction";
-import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function ProductDetails() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
-
-  const dispatch = useDispatch();
-  const cartData = useSelector((state) => state.cartReducer);
 
   const params = useParams();
   const productId = params.productId;
@@ -28,7 +22,6 @@ function ProductDetails() {
 
   useEffect(() => {
     getProductList();
-    window.scrollTo(0, 0);
     document.title = `${data?.title} - Depot`;
     // eslint-disable-next-line
   }, [data]);
@@ -64,29 +57,10 @@ function ProductDetails() {
               </p>
 
               <br />
-              {cartData.some((p) => p.id === data?.id) ? (
-                <Link to="/cart" className="go-to-cart">
-                  Go to Cart
-                </Link>
-              ) : (
-                <button
-                  aria-label="add-to-cart"
-                  onClick={() =>
-                    dispatch(
-                      AddtoCart({
-                        id: data?.id,
-                        price: data?.price,
-                        title: data?.title,
-                        image: data?.image,
-                        qty: 1,
-                      })
-                    )
-                  }
-                  className="add-to-cart"
-                >
-                  Add to Cart
-                </button>
-              )}
+
+              <button aria-label="add-to-cart" className="add-to-cart">
+                Add to Cart
+              </button>
             </Col>
           </Row>
         )}

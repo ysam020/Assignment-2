@@ -4,43 +4,47 @@ import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import Lottie from "lottie-react";
 import homeBannerLottie from "../assets/lottie-files/home-banner.json";
-import { useDispatch, useSelector } from "react-redux";
-import { AddtoCart } from "../actions/cartAction";
-// import { productCategories } from "../assets/data/ProductCategories";
-// import { productSorting } from "../assets/data/ProductSorting";
 import CircularProgress from "@mui/material/CircularProgress";
 import ReactPaginate from "react-paginate";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Tooltip } from "@material-ui/core";
-import Snackbar from "@mui/material/Snackbar";
 import Rating from "@mui/material/Rating";
+import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+import { IconButton } from "@material-ui/core";
+import { productCategories } from "../assets/data/ProductCategories";
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    icon: {
+      color: "#8696A0 !important",
+      backgroundColor: "transparent !important",
+      margin: "0 !important",
+    },
+  })
+);
 
 function Home() {
+  const classes = useStyles();
   const [data, setData] = useState([]);
   const [loading, setloading] = useState(true);
-
-  const dispatch = useDispatch();
-  const cartData = useSelector((state) => state.cartReducer);
-
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
-
-  const handleOpenSnackbar = () => {
-    setOpenSnackbar(true);
-  };
-
-  const handleCloseSnackbar = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpenSnackbar(false);
-  };
+  const [filterCategory, setFilterCategory] = useState("");
+  const navigate = useNavigate();
 
   async function getProductList() {
     await axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {
-        setData(response.data);
+        if (filterCategory === "") {
+          setData(response.data);
+        } else {
+          const products = response.data;
+          setData(
+            products.filter(
+              (item) => item.category === filterCategory.toLowerCase()
+            )
+          );
+        }
       })
       .catch((error) => console.error(error))
       .finally(() => setloading(false));
@@ -49,10 +53,9 @@ function Home() {
   useEffect(() => {
     getProductList();
 
-    window.scrollTo(0, 0);
     document.title = "Home - Depot";
     // eslint-disable-next-line
-  }, []);
+  }, [filterCategory]);
 
   // Pagination
   const [pageNumber, setPageNumber] = useState(0);
@@ -85,32 +88,12 @@ function Home() {
               readOnly
               className="product-rating"
             />
-            {cartData.some((product) => product.id === products.id) ? (
-              <Link to="/cart">Go to Cart</Link>
-            ) : (
-              <button
-                onClick={() => {
-                  dispatch(
-                    AddtoCart({
-                      id: products.id,
-                      price: products.price,
-                      title: products.title,
-                      image: products.image,
-                      qty: 1,
-                    })
-                  );
-                  handleOpenSnackbar();
-                }}
-              >
-                Add to Cart
-              </button>
-            )}
+
+            <button onClick={() => navigate(`/product/${id}`)}>View</button>
           </div>
         </Col>
       );
     });
-
-  // const filterProducts = () => {};
 
   return (
     <div className="homepage">
@@ -127,9 +110,7 @@ function Home() {
                   voluptas. Ea corporis molestiae cum. Libero fugiat, accusamus
                   modi dignissimos quae dolorum voluptatibus reprehenderit.
                 </p>
-                <a href="/#home-shop" className="home-banner-btn">
-                  Shop Now
-                </a>
+                <a href="/#home-shop">Shop Now</a>
               </div>
             </Col>
             <Col lg={6} className="hero-content-col-right">
@@ -143,31 +124,30 @@ function Home() {
 
       {/* Home Shop Section */}
       <Container className="home-shop" id="home-shop">
-        {/* <Row>
-          <Col sx={12} className="manage-products">
-            <div className="categories">
-              category:
-              {productCategories.map((item) => {
+        <Row>
+          <Col className="filters">
+            <div className="filters-text">
+              <span>Filters</span>
+              <IconButton className={classes.icon}>
+                <FilterAltRoundedIcon />
+              </IconButton>
+            </div>
+            <select
+              name="filters"
+              onChange={(e) => setFilterCategory(e.target.value)}
+            >
+              <option value="">Filter by category</option>
+              {productCategories.map((option) => {
                 return (
-                  <span
-                    key={item.id}
-                    onClick={() => filterProducts(item.category)}
-                  >
-                    {item.category}
-                  </span>
+                  <option key={option.id} value={option.category}>
+                    {option.category}
+                  </option>
                 );
               })}
-            </div>
+            </select>
           </Col>
-          <Col xs={12} className="manage-products">
-            <div className="sorting">
-              sort by:
-              {productSorting.map((item) => {
-                return <span key={item.id}>{item.sortBy}</span>;
-              })}
-            </div>
-          </Col>
-        </Row> */}
+        </Row>
+
         {loading ? (
           <div
             className="loading"
@@ -197,12 +177,6 @@ function Home() {
           </Row>
         )}
       </Container>
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={2000}
-        onClose={handleCloseSnackbar}
-        message="Added to cart"
-      />
     </div>
   );
 }
